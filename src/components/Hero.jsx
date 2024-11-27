@@ -93,8 +93,8 @@ const Hero = () => {
         ease: "power1.out",
       });
       tl.to(phone1Ref.current, {
-        y: 460, // Move down
-        rotate: 22, // Reset rotation
+        y: 400, // Move down
+        rotate: 16, // Reset rotation
         duration: 2,
         ease: "power1.out",
       });
