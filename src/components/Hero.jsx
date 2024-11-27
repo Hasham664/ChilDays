@@ -87,7 +87,7 @@ const Hero = () => {
 
       // Initial animation: Move down and rotate
       tl.to(phone1Ref.current, {
-        y: -1000, // Move down
+        y: -560, // Move down
         rotate: 32, // Reset rotation
         duration: 2,
         ease: "power1.out",
@@ -205,7 +205,7 @@ const Hero = () => {
 
       <div
         ref={secondSectionRef}
-        className="  h-[100vh] bg-gradient-to-r from-purple-500 to-pink-500 bg-cover bg-center"
+        className="  pb-48 bg-gradient-to-r from-purple-500 to-pink-500 bg-cover bg-center"
         style={{ backgroundImage: "url('./heroBack2.jpg')" }}
       >
         <div className="flex justify-around pt-24 container relative">
