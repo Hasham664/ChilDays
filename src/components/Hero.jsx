@@ -82,27 +82,28 @@ const Hero = () => {
          const tl = gsap.timeline({
            scrollTrigger: {
              trigger: phone1Ref.current,
-             start: "top center", // Start when phone1 is in the center of the viewport
+             start: "top ", // Start when phone1 is in the center of the viewport
              end: () => secondSectionRef.current.offsetTop, // End at the second section
              scrub: 1.5, // Sync animation with scroll
            },
          });
+         
 
          // Animations for wider screens
          tl.to(phone1Ref.current, {
-           y: -300, // Move down
+           y: 0, // Move down
            rotate: 32, // Initial rotation
            duration: 2,
            ease: "power1.out",
          })
            .to(phone1Ref.current, {
-             y: 250, // Move down
+             y: 500, // Move down
              rotate: 16, // Reduce rotation
              duration: 2,
              ease: "power1.out",
            })
            .to(phone1Ref.current, {
-             y: 1170, // Move down
+             y: 1470, // Move down
              rotate: 0, // Reset rotation
              duration: 2,
              ease: "power1.out",
@@ -130,19 +131,19 @@ const Hero = () => {
 
          // Animations for smaller screens
          tl.to(phone1Ref.current, {
-           y: -400, // Move down
+          //  y: -400, // Move down
            rotate: 32, // Initial rotation
            duration: 2,
            ease: "power1.out",
          })
            .to(phone1Ref.current, {
-             y: 250, // Move down
+             y: 450, // Move down
              rotate: 16, // Reduce rotation
              duration: 2,
              ease: "power1.out",
            })
            .to(phone1Ref.current, {
-             y: 1250, // Move down
+             y: 1450, // Move down
              rotate: 0, // Reset rotation
              duration: 2,
              ease: "power1.out",
@@ -163,11 +164,11 @@ const Hero = () => {
 
   return (
     <div>
-      <div className="relative">
+      <div className="">
         <Image
           src={phone1}
           alt=""
-          className="w-[16%] right-[33%]  z-10 absolute "
+          className="w-[16%] right-[30%] -top-[40%]  z-10 absolute "
           // style={{ transform: "rotate(32deg)" }}
           ref={phone1Ref}
         />
@@ -177,9 +178,9 @@ const Hero = () => {
         style={{ backgroundImage: "url('./heroBack.jpg')" }}
       >
         <div className="relative">
-          <Image src={Line} alt="" className="absolute -top-" />
+          <Image src={Line} alt="" className="absolute " />
         </div>
-        <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-4 lg:gap-24 md:gap-24">
+        <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-4 lg:gap-24 md:gap-32">
           <div>
             <div className="p-14">
               <Image src={logo} alt="" />
@@ -196,13 +197,13 @@ const Hero = () => {
               <Image
                 src={loading4}
                 alt=""
-                className="w-24 mt-60"
+                className="w-20 mt-60"
                 ref={addIconRef}
               />
               <Image
                 src={loading3}
                 alt=""
-                className="w-24 ml-6 mt-5"
+                className="w-20 ml-6 mt-5"
                 ref={addIconRef}
               />
             </div>
@@ -212,21 +213,21 @@ const Hero = () => {
               <Image
                 src={loading2}
                 alt=""
-                className="absolute left-[20%] top-32 w-24"
+                className="absolute left-[27%] top-24 w-20"
                 ref={addIconRef}
               />
               <Image
                 src={loading1}
                 alt=""
-                className="absolute left-[50%] w-24 top-16"
+                className="absolute left-[50%] w-20 top-16"
                 ref={addIconRef}
               />
             </div>
-            <div className="absolute top-[50%]">
+            <div className="absolute top-[41%] container">
               <span className="pt-10 text-white text-5xl font-bold">
                 Imagine this:
               </span>
-              <p className="text-white text-5xl max-w-[590px] font-bold">
+              <p className="text-white  lg:text-4xl max-w-[700px] font-bold">
                 <span ref={(el) => (textRef.current[0] = el)}>
                   From now on,every
                 </span>
