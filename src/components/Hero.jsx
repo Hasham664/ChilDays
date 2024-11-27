@@ -111,7 +111,7 @@ const Hero = () => {
         ease: "power1.out",
       });
       tl.to(phone1Ref.current, {
-        x: -500, // Move left
+        x: -550, // Move left
         ease: "power1.out",
       });
     }
