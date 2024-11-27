@@ -74,52 +74,96 @@ const Hero = () => {
       });
     });
 
-    if (phone1Ref.current && secondSectionRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: phone1Ref.current,
-          start: "top center", // Start when phone1 is in the center of the viewport
-          end: () => secondSectionRef.current.offsetTop, // End at the top of the second section
-          scrub: 1.5, // Sync animation with scroll
-          
-        },
-      });
+   if (phone1Ref.current && secondSectionRef.current) {
+     // Match media for responsiveness
+     ScrollTrigger.matchMedia({
+       // For screens larger than 1300px
+       "(min-width: 1300px)": function () {
+         const tl = gsap.timeline({
+           scrollTrigger: {
+             trigger: phone1Ref.current,
+             start: "top center", // Start when phone1 is in the center of the viewport
+             end: () => secondSectionRef.current.offsetTop, // End at the second section
+             scrub: 1.5, // Sync animation with scroll
+           },
+         });
 
-      // Initial animation: Move down and rotate
-      tl.to(phone1Ref.current, {
-        y: -560, // Move down
-        rotate: 32, // Reset rotation
-        duration: 2,
-        ease: "power1.out",
-      });
-      tl.to(phone1Ref.current, {
-        y: 250, // Move down
-        rotate: 16, // Reset rotation
-        duration: 2,
-        ease: "power1.out",
-      });
-       tl.to(phone1Ref.current, {
-         y: 1100, // Move down
-         rotate: 0, // Reset rotation
-         duration: 2,
-         ease: "power1.out",
-       });
+         // Animations for wider screens
+         tl.to(phone1Ref.current, {
+           y: -300, // Move down
+           rotate: 32, // Initial rotation
+           duration: 2,
+           ease: "power1.out",
+         })
+           .to(phone1Ref.current, {
+             y: 250, // Move down
+             rotate: 16, // Reduce rotation
+             duration: 2,
+             ease: "power1.out",
+           })
+           .to(phone1Ref.current, {
+             y: 1170, // Move down
+             rotate: 0, // Reset rotation
+             duration: 2,
+             ease: "power1.out",
+           })
+           .to(phone1Ref.current, {
+             x: -150, // Move left
+             ease: "power1.out",
+           })
+           .to(phone1Ref.current, {
+             x: -550, // Final position
+             ease: "power1.out",
+           });
+       },
 
-      // Change position when it reaches the second section
-      tl.to(phone1Ref.current, {
-        x: -150, // Move left
-        ease: "power1.out",
-      });
-      tl.to(phone1Ref.current, {
-        x: -550, // Move left
-        ease: "power1.out",
-      });
-    }
+       // For screens smaller than 1300px
+       "(max-width: 1300px)": function () {
+         const tl = gsap.timeline({
+           scrollTrigger: {
+             trigger: phone1Ref.current,
+             start: "top center", // Start when phone1 is in the center of the viewport
+             end: () => secondSectionRef.current.offsetTop, // End at the second section
+             scrub: 1.5, // Sync animation with scroll
+           },
+         });
+
+         // Animations for smaller screens
+         tl.to(phone1Ref.current, {
+           y: -400, // Move down
+           rotate: 32, // Initial rotation
+           duration: 2,
+           ease: "power1.out",
+         })
+           .to(phone1Ref.current, {
+             y: 250, // Move down
+             rotate: 16, // Reduce rotation
+             duration: 2,
+             ease: "power1.out",
+           })
+           .to(phone1Ref.current, {
+             y: 1250, // Move down
+             rotate: 0, // Reset rotation
+             duration: 2,
+             ease: "power1.out",
+           })
+           .to(phone1Ref.current, {
+             x: -150, // Move left
+             ease: "power1.out",
+           })
+           .to(phone1Ref.current, {
+             x: -420, // Final position for smaller screens
+             ease: "power1.out",
+           });
+       },
+     });
+   }
+
   }, []);
 
   return (
     <div>
-      <div className="">
+      <div className="relative">
         <Image
           src={phone1}
           alt=""
@@ -129,7 +173,7 @@ const Hero = () => {
         />
       </div>
       <div
-        className="relative h-[100%] pb-16 bg-gradient-to-r from-purple-500 to-pink-500 bg-cover bg-center"
+        className="relative  pb-48 bg-gradient-to-r from-purple-500 to-pink-500 bg-cover bg-center"
         style={{ backgroundImage: "url('./heroBack.jpg')" }}
       >
         <div className="relative">
@@ -141,11 +185,11 @@ const Hero = () => {
               <Image src={logo} alt="" />
             </div>
 
-            <div className="">
+            <div className="relative">
               <Image
                 src={phone2}
                 alt=""
-                className="lg:w-[25%] md:w-[28%] w-[44%] absolute left-12 lg:left-48 top-28 "
+                className="lg:w-[46%] md:w-[24%] w-[44%] absolute left-12 lg:left-48 top-0 "
               />
             </div>
             <div className="ml-16">
@@ -205,12 +249,12 @@ const Hero = () => {
 
       <div
         ref={secondSectionRef}
-        className="  pb-48 bg-gradient-to-r from-purple-500 to-pink-500 bg-cover bg-center"
+        className="  pb-72 bg-gradient-to-r from-purple-500 to-pink-500 bg-cover bg-center"
         style={{ backgroundImage: "url('./heroBack2.jpg')" }}
       >
-        <div className="flex justify-around pt-24 container relative">
+        <div className="flex justify-around pt-24 container relative flex-wrap gap-10">
           <div></div>
-          <div className="mt-96">
+          <div className="lg:mt-72 md:mt-32">
             <h1 className="text-gray-600 font-bold  text-3xl lg:text-5xl md:text-5xl max-w-[330px]">
               Get spots just right for yoy
             </h1>
@@ -223,7 +267,7 @@ const Hero = () => {
               <Image
                 src={star}
                 alt=""
-                className="w-48 around absolute right-72 top-[60%]"
+                className="w-48 around absolute right-72 lg:top-[58%] md:top-[35%]"
               />
             </div>
           </div>
